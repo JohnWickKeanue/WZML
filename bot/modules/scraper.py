@@ -186,8 +186,10 @@ def scrapper(update, context):
              r = client.post(f"{DOMAIN}/links/go", data=data, headers=h)
              glink = r.json()['url']
              t = rget(glink)
-             title = soupt.select('meta[property^="og:description"]')
-             gd_txt += f"{no}. <code>{(title[0]['content']).replace('Download ' , '')}</code>\n{gdlk}\n\n"
+             soupt = BeautifulSoup(t.text, "html.parser")
+             title = soupt.title
+             no += 1
+             gd_txt += f"{no}.{(title.text).replace('GDToT | ' , '')}\n{glink}\n\n"
              editMessage(gd_txt, sent)
              asleep(1.5)
                 if len(gd_txt) > 4000:
