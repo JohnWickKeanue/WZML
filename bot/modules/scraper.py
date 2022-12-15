@@ -164,7 +164,7 @@ def scrapper(update, context):
          sent = sendMessage('Running Scrape ...', context.bot, update.message)
          gd_txt, no = "", 0
          r = rget(link)
-         soup = BeautifulSoup (r, "html.parser")
+         soup = BeautifulSoup (r.text, "html.parser")
          links = soup.select('a[href*="short2url"]')
          gd_txt = f"Total Links Found : {len(links)}\n\n"
          editMessage(gd_txt, sent)
