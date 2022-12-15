@@ -192,7 +192,7 @@ def scrapper(update, context):
              gd_txt += f"{no}.{(title.text).replace('GDToT | ' , '')}\n{glink}\n\n"
              editMessage(gd_txt, sent)
              asleep(1.5)
-                if len(gd_txt) > 4000:
+             if len(gd_txt) > 4000:
                    sent = sendMessage("<i>Running More Scrape ...</i>", context.bot, update.message)
                    gd_txt = ""
                 
