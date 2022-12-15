@@ -169,6 +169,7 @@ def scrapper(update, context):
          gd_txt = f"Total Links Found : {len(links)}\n\n"
          editMessage(gd_txt, sent)
          for a in links:
+             client = requests.session()
              download = get(a['href'], stream=True, allow_redirects=False)
              url = download.headers["location"]
              DOMAIN = "https://technemo.xyz/blog"
